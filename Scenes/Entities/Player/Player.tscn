@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d3gxnquml4w73"]
 
-[ext_resource type="Script" path="res://Scenes/Entities/Player/player.gd" id="1_ww1jq"]
+[ext_resource type="Script" uid="uid://cxfbhgcobg5ki" path="res://Scenes/Entities/Player/player.gd" id="1_ww1jq"]
 [ext_resource type="Texture2D" uid="uid://cque6jr76di5d" path="res://icon.svg" id="2_e0qje"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u4v0q"]
@@ -20,5 +20,3 @@ script = ExtResource("1_ww1jq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_u4v0q")
-
-[node name="Camera2D" type="Camera2D" parent="."]

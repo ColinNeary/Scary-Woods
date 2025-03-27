@@ -1,12 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://coioy0kh33iwj"]
 
-[ext_resource type="Script" path="res://Scenes/main.gd" id="1_d6lho"]
-[ext_resource type="PackedScene" uid="uid://ck1fwao22w3pt" path="res://Scenes/Maps and Environment/Map.tscn" id="1_y3wrg"]
-[ext_resource type="PackedScene" uid="uid://dskpjighbhus0" path="res://Scenes/Menus and UI/Main Menu.tscn" id="2_jeakp"]
+[ext_resource type="Script" uid="uid://g46j8n2suscg" path="res://Scenes/main.gd" id="1_d6lho"]
+[ext_resource type="PackedScene" uid="uid://ck1fwao22w3pt" path="res://Scenes/Environment/Map.tscn" id="1_y3wrg"]
+[ext_resource type="PackedScene" uid="uid://dskpjighbhus0" path="res://Scenes/UI/Main Menu.tscn" id="2_jeakp"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_d6lho")
 
-[node name="Main Menu" parent="." instance=ExtResource("2_jeakp")]
-
 [node name="Map" parent="." instance=ExtResource("1_y3wrg")]
+position = Vector2(414, 330)
+
+[node name="Main Menu" parent="." instance=ExtResource("2_jeakp")]
+metadata/_edit_use_anchors_ = true

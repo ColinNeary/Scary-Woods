@@ -1,10 +1,19 @@
-## INFO: This is a skeleton of how the player script might look. 
+## TODO:Replace UI actions with custom gameplay actions such as WASD movement, Interact, etc.
+##		Give the player collision
+##		Set up animations when available
+##		Set up world collisions when available
+##		Create a Camer2D that follows the Player
+
+## INFO: video tutorials	https://www.youtube.com/watch?v=1TU2X37wPes
+##							https://youtu.be/Luf2Kr5s3BM?t=724
+##		 text tutorials		https://docs.godotengine.org/en/stable/tutorials/2d/2d_movement.html
+##							https://docs.godotengine.org/en/stable/tutorials/physics/using_character_body_2d.html
 
 extends CharacterBody2D
+class_name Player
 
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -17,16 +26,7 @@ func _process(delta: float) -> void:
 
 # Called every process frame (60/second by default). 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = direction * SPEED

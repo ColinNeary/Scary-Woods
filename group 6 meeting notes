@@ -19,3 +19,6 @@ Ved will work on the AI for the Enemy Node
 3/28/2025
 Bhargav will work on animations and sprite work. The place holder art wil be used first. The writers will flesh out more of the world. (some people were unable to attend)
 UPDATE: Ved says he's working on the enemy node tonight
+
+3/29/2025
+Ved asked how the enemy node will work. I explained that it will be a CharacterBody2D that uses Area2D to detect the player. I(Bhargav) gave him some tutorials to help create the enemy node.

@@ -22,3 +22,6 @@ UPDATE: Ved says he's working on the enemy node tonight
 
 3/29/2025
 Ved asked how the enemy node will work. I explained that it will be a CharacterBody2D that uses Area2D to detect the player. I(Bhargav) gave him some tutorials to help create the enemy node.
+
+4/4/2025
+Ved says that he may be done with the enemy node by sunday.

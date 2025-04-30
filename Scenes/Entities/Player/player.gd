@@ -1,36 +1,63 @@
-## TODO:Replace UI actions with custom gameplay actions such as WASD movement, Interact, etc.
-##		Give the player collision
-##		Set up animations when available
-##		Set up world collisions when available
-##		Create a Camer2D that follows the Player
-
-## INFO: video tutorials	https://www.youtube.com/watch?v=1TU2X37wPes
-##							https://youtu.be/Luf2Kr5s3BM?t=724
-##		 text tutorials		https://docs.godotengine.org/en/stable/tutorials/2d/2d_movement.html
-##							https://docs.godotengine.org/en/stable/tutorials/physics/using_character_body_2d.html
-
 extends CharacterBody2D
 class_name Player
 
+const SPEED := 300
+var currentdir := "down"
 
-const SPEED = 300.0
+func _physics_process(delta):
+	velocity = Vector2.ZERO
+	var moving := false
 
+	if Input.is_action_pressed("ui_right"):
+		currentdir = "right"
+		velocity.x = SPEED
+		moving = true
+	elif Input.is_action_pressed("ui_left"):
+		currentdir = "left"
+		velocity.x = -SPEED
+		moving = true
+	elif Input.is_action_pressed("ui_down"):
+		currentdir = "down"
+		velocity.y = SPEED
+		moving = true
+	elif Input.is_action_pressed("ui_up"):
+		currentdir = "up"
+		velocity.y = -SPEED
+		moving = true
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+	play_anim(moving)
+	move_and_slide()  # in Godot 4 this uses the velocity you set above
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass # Replace with function body.
+func play_anim(moving: bool) -> void:
+	var anim = $AnimatedSprite2D
 
-# Called every process frame (60/second by default). 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
-	# Get the input direction and handle the movement/deceleration.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
+	if currentdir == "right":
+		anim.flip_h = false
+		if moving:
+			anim.play("right_walk")
+		else:
+			anim.play("right_idle")
+
+	elif currentdir == "left":
+		anim.flip_h = false
+		if moving:
+			anim.play("left_walk")
+		else:
+			anim.play("left_idle")
+
+	elif currentdir == "down":
+		anim.flip_h = false
+		if moving:
+			anim.play("front_walk")
+		else:
+			anim.play("front_idle")
+
+	elif currentdir == "up":
+		anim.flip_h = false
+		if moving:
+			anim.play("back_walk")
+		else:
+			anim.play("back_idle")
+
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	move_and_slide()
+		anim.play("front_idle")  # fallback

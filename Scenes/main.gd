@@ -1,4 +1,4 @@
-## TODO:Start game by loading "Main Menu" node
+  ## TODO:Start game by loading "Main Menu" node
 ##		Create Main Menu options: Start button, Exit button, etc.
 ##		Start button should delete "Main Menu" then load "Map"
 

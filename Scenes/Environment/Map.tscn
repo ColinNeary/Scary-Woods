@@ -225,6 +225,7 @@ tile_map_data = PackedByteArray("AADL/zAAAAAHAAYAAADM/zAAAAAHAAYAAADN/zAAAAAHAAY
 tile_set = SubResource("TileSet_2byj2")
 
 [node name="Player" parent="." instance=ExtResource("1_qx0vg")]
+collision_mask = 1
 
 [node name="Enemy" parent="." instance=ExtResource("2_cvja1")]
 position = Vector2(339, 6)

@@ -19,4 +19,5 @@ motion_mode = 1
 script = ExtResource("1_ww1jq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.507812, 0.507812)
 sprite_frames = SubResource("SpriteFrames_u4v0q")

@@ -9,20 +9,30 @@
 ##							https://docs.godotengine.org/en/stable/tutorials/physics/using_character_body_2d.html
 
 extends CharacterBody2D
-class_name Enemy
 
+var speed = 40
+var player_chase = false 
+var player = null
 
-const SPEED = 300.0
+func _physics_process(delta):
+	if player_chase:
+		position += (player.position - position)/speed
+		
+		$AnimatedSprite2D.play("walk")
+		
+		if(player.position.x - position.x) < 0:
+			$AnimatedSprite2D.flip_h = true
+		else:
+			$AnimatedSprite2D.flip_h = false
+	else:
+		$AnimationSprite2D.play("idle")
+		
+func _on_detection_area_body_entered(body: Node2D) -> void:
+	player = body
+	player_chase = true
+	
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass # Replace with function body.
-
-# Called every process frame (60/second by default). 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
-	pass # Replace with function body.
+func _on_detection_area_body_exited(body: Node2D) -> void:
+	player = null
+	player_chase = false
+	
